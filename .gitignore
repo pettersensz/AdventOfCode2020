@@ -1,3 +1,5 @@
 .vs/
 AdventOfCode2020.Cmd/bin/
 AdventOfCode2020.Cmd/obj/
+AdventOfCode2020.Test/bin/
+AdventOfCode2020.Test/obj/
