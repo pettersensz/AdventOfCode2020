@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode2020.Cmd.Week1
+﻿namespace AdventOfCode2020.Cmd.Week1
 {
   public class Day01
   {
@@ -14,31 +8,69 @@ namespace AdventOfCode2020.Cmd.Week1
       _input = Utils.FileReader.ReadLinesInTextFile(filename);
     }
 
-    public int GetProduct()
+    public int GetProduct(int howManyNumbers)
     {
-      FindNumbersThatSumTo2020(out var number1, out var number2);
-      return number1 * number2;
+      if (howManyNumbers == 2)
+      {
+        FindTwoNumbersThatSumTo2020(out var number1, out var number2);
+        return number1 * number2;
+      }
+
+      else if (howManyNumbers == 3)
+      {
+        FindThreNumbersThatSumTo2020(out var n1, out var n2, out var n3);
+        var product = n1 * n2 * n3;
+        return product;
+      }
+      else
+      {
+        Console.WriteLine($"Input {howManyNumbers} is not supported.");
+        return 0;
+      }
     }
 
-    public void FindNumbersThatSumTo2020(out int number1, out int number2)
+    private void FindThreNumbersThatSumTo2020(out int n1, out int n2, out int n3)
+    {
+      n1 = 0;
+      n2 = 0;
+      n3 = 0;
+      var numberList = GetNumberList();
+      for (var i = 0; i < numberList.Count; i++)
+      {
+        for (var j = i + 1; j < numberList.Count; j++)
+        { 
+          for(var k = j + 1; k < numberList.Count; k++)
+          {
+            var sum = numberList[i] + numberList[j] + numberList[k];
+            if(sum == 2020)
+            {
+              n1 = numberList[i];
+              n2 = numberList[j];
+              n3 = numberList[k];
+            }
+          }
+        }
+      }
+    }
+
+    public void FindTwoNumbersThatSumTo2020(out int number1, out int number2)
     {
       number1 = 0;
       number2 = 0;
       var numberList = GetNumberList();
-      for(var i = 0; i < numberList.Count; i++)
+      for (var i = 0; i < numberList.Count; i++)
       {
-        for(var j = i+1; j < numberList.Count; j++)
+        for (var j = i + 1; j < numberList.Count; j++)
         {
           var sum = numberList[i] + numberList[j];
           //Console.WriteLine($"{numberList[i]} + {numberList[j]} = {sum}");
-          if(sum == 2020)
+          if (sum == 2020)
           {
             number1 = numberList[i];
             number2 = numberList[j];
           }
         }
       }
-
     }
 
     public List<int> GetNumberList()

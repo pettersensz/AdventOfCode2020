@@ -25,7 +25,7 @@ namespace AdventOfCode2020.Test
     public void FindNumbersReturnsCorrectNumbersForTestInput()
     {
       var day1 = new Day01(_testFileName);
-      day1.FindNumbersThatSumTo2020(out var number1, out var number2);
+      day1.FindTwoNumbersThatSumTo2020(out var number1, out var number2);
       var sum = number1 + number2;
       sum.Should().Be(2020);
       number1.Should().Be(1721);
@@ -33,11 +33,35 @@ namespace AdventOfCode2020.Test
     }
 
     [Fact]
-    public void GetProductReturnsCorrectNumberForTestInput()
+    public void GetProductReturnsCorrectNumberForTestInputWith2()
     {
       var day1 = new Day01(_testFileName);
-      var result = day1.GetProduct();
+      var result = day1.GetProduct(2);
       result.Should().Be(514579);
+    }
+
+    [Fact]
+    public void GetProductReturnsCorrectNumberForTestInputWith3()
+    {
+      var day1 = new Day01(_testFileName);
+      var result = day1.GetProduct(3);
+      result.Should().Be(241861950);
+    }
+
+    [Fact]
+    public void GetProductReturnsZeroNumberForTestInputWith1()
+    {
+      var day1 = new Day01(_testFileName);
+      var result = day1.GetProduct(1);
+      result.Should().Be(0);
+    }
+
+    [Fact]
+    public void GetProductReturnsZeroNumberForTestInputWith4()
+    {
+      var day1 = new Day01(_testFileName);
+      var result = day1.GetProduct(4);
+      result.Should().Be(0);
     }
   }
 }
