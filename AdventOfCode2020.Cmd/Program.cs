@@ -22,13 +22,21 @@ namespace AdventOfCode2020.Cmd
       var day2TestResult = day2Test.GetNumberOfCorrectPasswords();
       var day2TestResultPart2 = day2Test.GetNumberOfCorrectPasswordsWithDifferentPolicies();
       Console.WriteLine("Day 2 Part 1 Test Result: " + day2TestResult);
-      Console.WriteLine("Day 2 Pert 2 Test Result: " + day2TestResultPart2);
+      Console.WriteLine("Day 2 Part 2 Test Result: " + day2TestResultPart2);
 
       var day2 = new Day02("Day02_Input.txt");
       var day2Result = day2.GetNumberOfCorrectPasswords();
       var day2ResultPart2 = day2.GetNumberOfCorrectPasswordsWithDifferentPolicies();
       Console.WriteLine("Day 2 Part 1 Result: " + day2Result);
       Console.WriteLine("Day 2 Part 2 Result: " + day2ResultPart2);
+
+      var day3Test = new Day03("Day03_Input_Test.txt", 6);
+      var day3TestResult = day3Test.MoveOnMap(3, 1);
+      Console.WriteLine("Day 3 Part 1 Test Result: " + day3TestResult);
+
+      var day3 = new Day03("Day03_Input.txt", 40);
+      var day3Result = day3.MoveOnMap(3, 1);
+      Console.WriteLine("Day 3 Part 1 Result: " + day3Result);
     }
   }
 }
