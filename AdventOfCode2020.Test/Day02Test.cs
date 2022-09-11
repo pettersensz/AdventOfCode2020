@@ -79,5 +79,56 @@ namespace AdventOfCode2020.Test
 
       correctPasswords.Should().Be(1);
     }
+
+    [Fact]
+    public void PositionContainsCharacterReturnsTrueAtCorrectIndex()
+    {
+      var day2 = new Day02(_testFileName);
+      var result = day2.PasswordHasCharacterAtPosition("abcde", 'a', 1);
+      result.Should().BeTrue("String has 'a' at position 1.");
+    }
+
+    [Fact]
+    public void PositionContainsCharacterReturnsFalseAtWrongIndex()
+    {
+      var day2 = new Day02(_testFileName);
+      var result = day2.PasswordHasCharacterAtPosition("abcde", 'a', 3);
+      result.Should().BeFalse("String does not have 'a' at position 3.");
+    }
+
+
+    [Fact]
+    public void PositionContainsCharacterReturnsFalseIfStringDoesNotContainCharacter()
+    {
+      var day2 = new Day02(_testFileName);
+      var result2 = day2.PasswordHasCharacterAtPosition("cdefg", 'b', 1);
+      result2.Should().BeFalse("String does not contain 'b'.");
+    }
+
+    [Fact]
+    public void TestExamplePasswordsWithDifferentPolicy()
+    {
+      var day2 = new Day02(_testFileName);
+
+      var password1 = "abcde";
+      var policy1 = new DifferentPasswordPolicy("1-3 a");
+      var result1 = day2.PasswordContainsLetterAtOneOfIndexes(password1, policy1);
+      result1.Should().BeTrue("Password contains 'a' at position 1, but not 3");
+
+      var password2 = "cdefg";
+      var policy2 = new DifferentPasswordPolicy("1-3 b");
+      var result2 = day2.PasswordContainsLetterAtOneOfIndexes(password2, policy2);
+      result2.Should().BeFalse("Password does not contain expected character");
+
+      var password3 = "ccccccccc";
+      var policy3 = new DifferentPasswordPolicy("2-9 c");
+      var result3 = day2.PasswordContainsLetterAtOneOfIndexes(password3, policy3);
+      result3.Should().BeFalse("Both positions contain the letter c");
+
+      var password4 = "tjjj";
+      var policy4 = new DifferentPasswordPolicy("3-4 j");
+      var result4 = day2.PasswordContainsLetterAtOneOfIndexes(password4, policy4);
+      result4.Should().BeFalse("Both positions contain the letter j");
+    }
   }
 }

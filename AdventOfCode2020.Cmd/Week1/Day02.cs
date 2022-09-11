@@ -73,19 +73,36 @@
       {
         var password = passwords[i];
         var policy = policies[i];
-        if (!password.Contains(policy.Letter)) continue;
-        if (password[policy.Position1+1] == policy.Letter &&
-          password[policy.Position2+1] != policy.Letter)         
+        //Console.Write($"{password}, {policy.Letter}. ");
+        if(PasswordContainsLetterAtOneOfIndexes(password, policy))
         {
           correctPasswords++;
+          //Console.Write(" OK!");
         }
-        if (password[policy.Position1+1] != policy.Letter &&
-          password[policy.Position2+1] == policy.Letter)
-        {
-          correctPasswords++;
-        }
+        //Console.Write("\n");
       }
       return correctPasswords;
+    }
+
+    public bool PasswordContainsLetterAtOneOfIndexes(string password, DifferentPasswordPolicy policy)
+    {
+      bool letterAtPosition1 = PasswordHasCharacterAtPosition(password, policy.Letter, policy.Position1);
+      //Console.Write($"P1: {policy.Position1}: {letterAtPosition1}. ");
+      bool letterAtPosition2 = PasswordHasCharacterAtPosition(password, policy.Letter, policy.Position2);
+      //Console.Write($"P2: {policy.Position2}: {letterAtPosition2}. ");
+      if (letterAtPosition1 && !letterAtPosition2) return true;
+      if (letterAtPosition2 && !letterAtPosition1) return true;
+      return false;
+    }
+
+    public bool PasswordHasCharacterAtPosition(string input, char c, int position)
+    {
+      if (input.Length < 1 || input == null) return false;
+      var index = input.IndexOf(c);
+      if (index == -1) return false;
+      // Compensate for no zero-index, e.g. position 1 is first char.
+      if (input[position-1] == c) return true;
+      return false;
     }
   }
 
