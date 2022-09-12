@@ -31,12 +31,23 @@ namespace AdventOfCode2020.Cmd
       Console.WriteLine("Day 2 Part 2 Result: " + day2ResultPart2);
 
       var day3Test = new Day03("Day03_Input_Test.txt");
-      var day3TestResult = day3Test.MoveOnMap(3, 1);
+      var initialMove = new MapMove(1, 3);
+      var allMoves = new List<MapMove>();
+      allMoves.Add(new MapMove(1, 1));
+      allMoves.Add(new MapMove(1, 3));
+      allMoves.Add(new MapMove(1, 5));
+      allMoves.Add(new MapMove(1, 7));
+      allMoves.Add(new MapMove(2, 1));
+      var day3TestResult = day3Test.MoveOnMap(initialMove);
+      var day3TestResultPart2 = day3Test.MoveOnMap(allMoves);
       Console.WriteLine("Day 3 Part 1 Test Result: " + day3TestResult);
+      Console.WriteLine("Day 3 Part 2 Test Result: " + day3TestResultPart2);
 
       var day3 = new Day03("Day03_Input.txt");
-      var day3Result = day3.MoveOnMap(3, 1);
+      var day3Result = day3.MoveOnMap(initialMove);
+      var day3ResultPart2 = day3.MoveOnMap(allMoves);
       Console.WriteLine("Day 3 Part 1 Result: " + day3Result);
+      Console.WriteLine("Day 3 Part 2 Result: " + day3ResultPart2);
     }
   }
 }

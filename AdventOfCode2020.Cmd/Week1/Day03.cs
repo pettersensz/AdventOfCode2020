@@ -24,11 +24,21 @@
       }
     }
 
-    public int MoveOnMap(int horizontalMove, int verticalMove)
+    public long MoveOnMap(List<MapMove> moves)
+    {
+      long product = 1;
+      foreach (var move in moves)
+      {
+        product *= MoveOnMap(move);
+      }
+      return product;
+    }
+
+    public int MoveOnMap(MapMove move)
     {
       var treeCounter = 0;
-      var hPos = horizontalMove;
-      for (var row = verticalMove; row < _input.Length; row = row + verticalMove)
+      var hPos = move.Right;
+      for (var row = move.Down; row < _input.Length; row += move.Down)
       {
         char value = 'A';
         while(value == 'A')
@@ -47,7 +57,7 @@
           treeCounter++;
           //Console.WriteLine($"Found tree at {hPos}, {row}");
         }
-        hPos = hPos + horizontalMove;
+        hPos += move.Right;
       }
 
       return treeCounter;
@@ -60,6 +70,17 @@
     {
       if (input == '#') return true;
       return false;
+    }
+  }
+
+  public class MapMove
+  {
+    public int Down;
+    public int Right;
+    public MapMove(int down, int right)
+    {
+      Down = down;
+      Right = right;
     }
   }
 }
