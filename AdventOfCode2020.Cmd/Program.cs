@@ -55,7 +55,9 @@ namespace AdventOfCode2020.Cmd
 
       var day4 = new Day04("Day04_Input.txt");
       var day4Result = day4.HowManyValidPassports(false);
+      var day4ResultPart2 = day4.HowManyValidPassports(true);
       Console.WriteLine("Day 4 Part 1 Result: " + day4Result);
+      Console.WriteLine("Day 4 Part 2 Result: " + day4ResultPart2);
     } 
   }
 }
