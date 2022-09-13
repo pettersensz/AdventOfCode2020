@@ -48,6 +48,14 @@ namespace AdventOfCode2020.Cmd
       var day3ResultPart2 = day3.MoveOnMap(allMoves);
       Console.WriteLine("Day 3 Part 1 Result: " + day3Result);
       Console.WriteLine("Day 3 Part 2 Result: " + day3ResultPart2);
-    }
+
+      var day4Test = new Day04("Day04_Input_Test.txt");
+      var day4TestResult = day4Test.HowManyValidPassports(false);
+      Console.WriteLine("Day 4 Part 1 Test Result: " + day4TestResult);
+
+      var day4 = new Day04("Day04_Input.txt");
+      var day4Result = day4.HowManyValidPassports(false);
+      Console.WriteLine("Day 4 Part 1 Result: " + day4Result);
+    } 
   }
 }
