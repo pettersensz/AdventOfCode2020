@@ -58,6 +58,10 @@ namespace AdventOfCode2020.Cmd
       var day4ResultPart2 = day4.HowManyValidPassports(true);
       Console.WriteLine("Day 4 Part 1 Result: " + day4Result);
       Console.WriteLine("Day 4 Part 2 Result: " + day4ResultPart2);
+
+      var day5 = new Day05("Day05_Input.txt");
+      var day5Result = day5.FindHighestSeatId();
+      Console.WriteLine("Day 5 Part 1 Result: " + day5Result);
     } 
   }
 }
