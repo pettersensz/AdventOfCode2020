@@ -61,7 +61,9 @@ namespace AdventOfCode2020.Cmd
 
       var day5 = new Day05("Day05_Input.txt");
       var day5Result = day5.FindHighestSeatId();
+      var day5ResultPart2 = day5.FindIdOfYourSeat();
       Console.WriteLine("Day 5 Part 1 Result: " + day5Result);
+      Console.WriteLine("Day 5 Part 2 Result: " + day5ResultPart2);
     } 
   }
 }
