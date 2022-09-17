@@ -76,6 +76,9 @@ namespace AdventOfCode2020.Cmd
       var day6ResultPart2 = day6.FindSumOfCommonAnswers();
       Console.WriteLine("Day 6 Part 1 Result: " + day6Result);
       Console.WriteLine("Day 6 Part 2 Resutl: " + day6ResultPart2);
+
+      var day7Test = new Day07("Day07_Input_Test.txt");
+
     } 
   }
 }
