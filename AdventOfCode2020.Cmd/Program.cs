@@ -64,6 +64,14 @@ namespace AdventOfCode2020.Cmd
       var day5ResultPart2 = day5.FindIdOfYourSeat();
       Console.WriteLine("Day 5 Part 1 Result: " + day5Result);
       Console.WriteLine("Day 5 Part 2 Result: " + day5ResultPart2);
+
+      var day6Test = new Day06("Day06_Input_Test.txt");
+      var day6TestResult = day6Test.FindSumOfUniqueAnswers();
+      Console.WriteLine("Day 6 Part 1 Test Result: " + day6TestResult);
+
+      var day6 = new Day06("Day06_Input.txt");
+      var day6Result = day6.FindSumOfUniqueAnswers();
+      Console.WriteLine("Day 6 Part 1 Result: " + day6Result);
     } 
   }
 }

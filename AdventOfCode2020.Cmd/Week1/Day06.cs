@@ -1,0 +1,69 @@
+﻿namespace AdventOfCode2020.Cmd.Week1
+{
+  public class Day06
+  {
+    private string[] _fileData;
+    private List<Group> _groups;
+    public Day06(string filename)
+    {
+      _fileData = Utils.FileReader.ReadLinesInTextFile(filename);
+      _groups = new List<Group>();
+      var answers = new List<string>();
+      foreach (string line in _fileData)
+      {
+        if (line.Length > 0)
+        {
+          answers.Add(line);
+        }
+        else
+        {
+          var group = new Group(answers);
+          _groups.Add(group);
+          answers = new List<string>();
+        }
+      }
+      // Add last entry
+      var lastGroup = new Group(answers);
+      _groups.Add(lastGroup);
+    }
+
+    public int FindSumOfUniqueAnswers()
+    {
+      var sum = 0;
+      foreach(var group in _groups)
+      {
+        int uniqueAnswers = group.FindUniqueAnswers();
+        sum += uniqueAnswers;
+      }
+      return sum;
+    }
+
+  }
+
+  public class Group
+  {
+    public List<string> Answers;
+    public Group(List<string> answers)
+    {
+      Answers = answers;
+    }
+
+    internal int FindUniqueAnswers()
+    {
+      var uniqueAnswers = new List<char>();
+      foreach(var line in Answers)
+      {
+        var characters = line.ToCharArray();
+        foreach(char c in characters)
+        {
+          if (c == ' ') continue;
+          if (!uniqueAnswers.Contains(c))
+          {
+            uniqueAnswers.Add(c);
+          }
+        }
+      }
+      return uniqueAnswers.Count;
+    }
+  }
+}
