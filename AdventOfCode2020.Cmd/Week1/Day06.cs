@@ -27,6 +27,17 @@
       _groups.Add(lastGroup);
     }
 
+    public int FindSumOfCommonAnswers()
+    {
+      var sum = 0;
+      foreach(var group in _groups)
+      {
+        int commonAnswers = group.FindCommonAnswers();
+        sum += commonAnswers;
+      }
+      return sum;
+    }
+
     public int FindSumOfUniqueAnswers()
     {
       var sum = 0;
@@ -48,13 +59,36 @@
       Answers = answers;
     }
 
+    internal int FindCommonAnswers()
+    {
+      var uniqueAnswers = GetListOfUniqueAnswers();
+      List<char> commonAnswers = new List<char>();
+      foreach(var uniqueAnswer in uniqueAnswers)
+      {
+        var ok = true;
+        foreach(var answer in Answers)
+        {
+          if (answer.Contains(uniqueAnswer)) continue;
+          ok = false;
+        }
+        if (ok) commonAnswers.Add(uniqueAnswer);
+      }
+      return commonAnswers.Count;
+    }
+
     internal int FindUniqueAnswers()
     {
+      var uniqueAnswers = GetListOfUniqueAnswers();
+      return uniqueAnswers.Count;
+    }
+
+    private List<char> GetListOfUniqueAnswers()
+    {
       var uniqueAnswers = new List<char>();
-      foreach(var line in Answers)
+      foreach (var line in Answers)
       {
         var characters = line.ToCharArray();
-        foreach(char c in characters)
+        foreach (char c in characters)
         {
           if (c == ' ') continue;
           if (!uniqueAnswers.Contains(c))
@@ -63,7 +97,7 @@
           }
         }
       }
-      return uniqueAnswers.Count;
+      return uniqueAnswers;
     }
   }
 }
