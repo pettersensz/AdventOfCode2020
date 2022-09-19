@@ -21,6 +21,34 @@ namespace AdventOfCode2020.Cmd.Week1
       }
     }
 
+    public int FindHowManyBagsAShinyGoldBagContains()
+    {
+      var count = 0;
+      var shinyGoldBag = _bags["shiny gold"];
+      foreach(var childBag in shinyGoldBag.Children)
+      {
+        count += childBag.Value * FindBagsInsideRecursive(childBag.Key);
+        count += childBag.Value;
+      }
+      return count;
+    }
+
+    private int FindBagsInsideRecursive(string key)
+    {
+      var count = 0;
+      key = key.TrimEnd();
+      var parentBag = _bags[key];
+      if (parentBag.Children.Count < 1) count++;
+      else
+      {
+        foreach (var childBag in parentBag.Children)
+        {
+          count += childBag.Value * FindBagsInsideRecursive(childBag.Key);
+        }
+      }
+      return count;
+    }
+
     public int FindHowManyBagsCanContainShinyGoldBags()
     {
       int count = 0;

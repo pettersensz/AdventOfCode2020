@@ -79,8 +79,12 @@ namespace AdventOfCode2020.Cmd
 
       var day7Test = new Day07("Day07_Input_Test.txt");
       var day7TestResult = day7Test.FindHowManyBagsCanContainShinyGoldBags();
-
+      var day7TestResultPart2 = day7Test.FindHowManyBagsAShinyGoldBagContains();
+      var day7Test_2 = new Day07("Day07_Input_Test_2.txt");
+      var day7TestResultPart2_2 = day7Test_2.FindHowManyBagsAShinyGoldBagContains();
       Console.WriteLine("Day 7 Part 1 Test Result: " + day7TestResult);
+      Console.WriteLine("Day 7 Part 2 Test Result: " + day7TestResultPart2);
+      Console.WriteLine("Day 7 Part 2 Test Result 2: " + day7TestResultPart2_2);
 
       var day7 = new Day07("Day07_Input.txt");
       var day7Result = day7.FindHowManyBagsCanContainShinyGoldBags();
