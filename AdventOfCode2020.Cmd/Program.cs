@@ -92,12 +92,16 @@ namespace AdventOfCode2020.Cmd
       Console.WriteLine("Day 7 Part 1 Result: " + day7Result);
 
       var day8Test = new Day08("Day08_Input_Test.txt");
-      var day8TestResult = day8Test.RunInstructions();
+      var day8TestResult = day8Test.RunInstructions(out _);
+      var day8TestResultPart2 = day8Test.FixProgram();
       Console.WriteLine("Day 8 Part 1 Test Result: " + day8TestResult);
+      Console.WriteLine("Day 8 Part 2 Test Result: " + day8TestResultPart2);
 
       var day8 = new Day08("Day08_Input.txt");
-      var day8Result = day8.RunInstructions();
+      var day8Result = day8.RunInstructions(out _);
+      var day8ResultPart2 = day8.FixProgram();
       Console.WriteLine("Day 8 Part 1 Result: " + day8Result);
+      Console.WriteLine("Day 8 Part 2 Result: " + day8ResultPart2);
     } 
   }
 }

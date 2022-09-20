@@ -20,35 +20,85 @@ namespace AdventOfCode2020.Cmd.Week2
       }
     }
   
-    public int RunInstructions()
+    public int RunInstructions(out bool completeProgram)
     {
+      completeProgram = false;
       var acc = 0;
       var i = 0;
       var moveNext = true;
-      while (moveNext)
+      try
       {
-        var currentInstruction = _instructions[i];
-        if (currentInstruction.Visited)
+        while (moveNext)
         {
-          moveNext = false;
-          continue;
+          var currentInstruction = _instructions[i];
+          if (currentInstruction.Visited)
+          {
+            moveNext = false;
+            continue;
+          }
+          if (currentInstruction.Operation == Operation.NoOp)
+          {
+            i++;
+          }
+          if (currentInstruction.Operation == Operation.Accumulate)
+          {
+            acc += currentInstruction.Argument;
+            i++;
+          }
+          if (currentInstruction.Operation == Operation.Jump)
+          {
+            i += currentInstruction.Argument;
+          }
+          currentInstruction.Visited = true;
         }
-        if(currentInstruction.Operation == Operation.NoOp)
-        {
-          i++;
-        }
-        if(currentInstruction.Operation == Operation.Accumulate)
-        {
-          acc += currentInstruction.Argument;
-          i++;
-        }
-        if(currentInstruction.Operation == Operation.Jump)
-        {
-          i += currentInstruction.Argument;
-        }
-        currentInstruction.Visited = true;
       }
+      catch (IndexOutOfRangeException)
+      {
+        completeProgram = true;
+      }
+
+      ResetInstructions();
+      
       return acc;
+    }
+
+    private void ResetInstructions()
+    {
+      foreach(var instruction in _instructions)
+      {
+        instruction.Visited = false;
+      }
+    }
+
+    public int FixProgram()
+    {
+      for (var i = 0; i < _instructions.Length; i++)
+      {
+        var instructions = GetFreshInstructions();
+        var instruction = instructions[i];
+        instruction.Print();
+        if(instruction.Operation == Operation.NoOp)
+        {
+          instruction.Operation = Operation.Jump;
+          var result = RunInstructions(out var completeProgram);
+          if (completeProgram) return result;
+          instruction.Operation = Operation.NoOp;
+        }
+        else if(instruction.Operation == Operation.Jump)
+        {
+          instruction.Operation = Operation.NoOp;
+          var result = RunInstructions(out var completeProgram);
+          if(completeProgram) return result;
+          instruction.Operation = Operation.Jump;
+        }
+      }
+
+      return 0;
+    }
+
+    public Instruction[] GetFreshInstructions()
+    {
+      return (Instruction[])_instructions.Clone();
     }
   
   }
