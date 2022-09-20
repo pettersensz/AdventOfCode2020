@@ -26,4 +26,8 @@
     <ProjectReference Include="..\AdventOfCode2020.Cmd\AdventOfCode2020.Cmd.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Week2\" />
+  </ItemGroup>
+
 </Project>

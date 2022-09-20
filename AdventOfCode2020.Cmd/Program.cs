@@ -1,4 +1,5 @@
 ﻿using AdventOfCode2020.Cmd.Week1;
+using AdventOfCode2020.Cmd.Week2;
 
 namespace AdventOfCode2020.Cmd
 {
@@ -89,6 +90,14 @@ namespace AdventOfCode2020.Cmd
       var day7 = new Day07("Day07_Input.txt");
       var day7Result = day7.FindHowManyBagsCanContainShinyGoldBags();
       Console.WriteLine("Day 7 Part 1 Result: " + day7Result);
+
+      var day8Test = new Day08("Day08_Input_Test.txt");
+      var day8TestResult = day8Test.RunInstructions();
+      Console.WriteLine("Day 8 Part 1 Test Result: " + day8TestResult);
+
+      var day8 = new Day08("Day08_Input.txt");
+      var day8Result = day8.RunInstructions();
+      Console.WriteLine("Day 8 Part 1 Result: " + day8Result);
     } 
   }
 }

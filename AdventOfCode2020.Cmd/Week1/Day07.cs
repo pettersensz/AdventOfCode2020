@@ -23,6 +23,7 @@ namespace AdventOfCode2020.Cmd.Week1
 
     public int FindHowManyBagsAShinyGoldBagContains()
     {
+      //Todo Revisit
       var count = 0;
       var shinyGoldBag = _bags["shiny gold"];
       foreach(var childBag in shinyGoldBag.Children)
