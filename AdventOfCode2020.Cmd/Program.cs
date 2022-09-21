@@ -105,11 +105,15 @@ namespace AdventOfCode2020.Cmd
 
       var day9Test = new Day09("Day09_Input_Test.txt");
       var day9TestResult = day9Test.FindFirstNumberNotFollowingRules(5);
+      var day9TestResultPart2 = day9Test.FindEncryptionWeakness(5);
       Console.WriteLine("Day 9 Part 1 Test Result: " + day9TestResult);
+      Console.WriteLine("Day 9 Part 2 Test Result: " + day9TestResultPart2);
 
       var day9 = new Day09("Day09_Input.txt");
       var day9Result = day9.FindFirstNumberNotFollowingRules(25);
+      var day9ResultPart2 = day9.FindEncryptionWeakness(25);
       Console.WriteLine("Day 9 Part 1 Result: " + day9Result);
+      Console.WriteLine("Day 9 Part 2 Result: " + day9ResultPart2);
     } 
   }
 }
