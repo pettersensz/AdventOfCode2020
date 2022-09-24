@@ -114,6 +114,15 @@ namespace AdventOfCode2020.Cmd
       var day9ResultPart2 = day9.FindEncryptionWeakness(25);
       Console.WriteLine("Day 9 Part 1 Result: " + day9Result);
       Console.WriteLine("Day 9 Part 2 Result: " + day9ResultPart2);
+
+      var day10Test = new Day10("Day10_Input_Test.txt");
+      var day10TestResult = day10Test.DetermineJoltResult();
+      var day10Test2 = new Day10("Day10_Input_Test_2.txt");
+      var day10TestResult2 = day10Test2.DetermineJoltResult();
+
+      var day10 = new Day10("Day10_Input.txt");
+      var day10Result = day10.DetermineJoltResult();
+      Console.WriteLine("Day 10 Part 1 Result: " + day10Result);
     } 
   }
 }
