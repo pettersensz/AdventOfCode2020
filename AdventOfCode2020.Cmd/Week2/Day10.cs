@@ -26,11 +26,11 @@ namespace AdventOfCode2020.Cmd.Week2
       _outletOutput = 0;
     }
 
-    internal int DetermineJoltResult()
+    internal int DetermineJoltResult(out int joltSum1, out int joltSum2, out int joltSum3)
     {
-      var joltSum1 = 0;
-      var joltSum2 = 0;
-      var joltSum3 = 0;
+      joltSum1 = 0;
+      joltSum2 = 0;
+      joltSum3 = 0;
       var startJolt = _outletOutput;
 
       foreach(var joltageEntry in _orderedJoltages)
@@ -53,6 +53,20 @@ namespace AdventOfCode2020.Cmd.Week2
       joltSum3++;
 
       return joltSum1 * joltSum3;
+    }
+
+    public int DeterminePossibleCombinations()
+    {
+      var joltResult = DetermineJoltResult(out var joltSum1, out var joltSum2, out var joltSum3);
+      var diff = _deviceJoltageRating;
+      var threesOnly = joltSum3 * 3;
+      var twosOnly = joltSum2 * 2;
+      var onesOnly = joltSum1;
+
+
+
+      // For test data 1 we expect 8
+      return 0;
     }
   }
 }
